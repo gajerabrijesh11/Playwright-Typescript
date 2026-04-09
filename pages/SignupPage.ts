@@ -19,10 +19,11 @@ export class SignupPage {
   async clickSignup() {
     await this.page.click('[data-qa="signup-button"]');
   }
-  async Invalidemailpassword(email: string, password: string) {
+  async emailpassword(email: string, password: string) {
     await this.page.fill('[data-qa="login-email"]', email);
     await this.page.fill('[data-qa="login-password"]', password);
   }
+
 
   async clickLogin() {
     await this.page.click('[data-qa="login-button"]');

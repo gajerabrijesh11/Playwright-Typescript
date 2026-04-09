@@ -12,7 +12,7 @@ export class HomePage {
   }
 
   async clickSignupLogin() {
-    await this.page.click('text=Signup / Login');
+    await this.page.getByRole('link', { name: ' Signup / Login' }).click();
   }
 
   async verifyLoggedIn(username: string) {

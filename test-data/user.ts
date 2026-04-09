@@ -11,6 +11,8 @@ export const userData = {
     zipcode: '380001',
     mobile: '9999999999',
     Invalidpassword: 'bg',
-    Invalidemail: 'bg@gmail.com'
+    Invalidemail: 'bg@gmail.com',
+    Validpassword: 'testbg',
+    Validemail: 'bg@gmail.com'
 
 }
