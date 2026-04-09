@@ -9,6 +9,8 @@ export const userData = {
     state: 'Gujarat',
     city: 'Ahmedabad',
     zipcode: '380001',
-    mobile: '9999999999'
+    mobile: '9999999999',
+    Invalidpassword: 'bg',
+    Invalidemail: 'bg@gmail.com'
 
 }
