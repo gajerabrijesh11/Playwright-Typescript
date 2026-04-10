@@ -1,3 +1,5 @@
+import path from 'path';
+
 export const userData = {
     name: 'test',
     email: 'testbg@gmail.com',
@@ -13,6 +15,10 @@ export const userData = {
     Invalidpassword: 'bg',
     Invalidemail: 'bg@gmail.com',
     Validpassword: 'testbg',
-    Validemail: 'bg@gmail.com'
-
+    Validemail: 'bg@gmail.com',
+    Contactusname: 'test',
+    Contactusemail: 'test@gmail.com',
+    Contactussubject: 'test',
+    ContactusMsg: 'test test test test test test test test test test test test test test test test test test ',
+    uploadFile: path.resolve(__dirname, 'testing.docx')
 }
