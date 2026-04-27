@@ -16,3 +16,5 @@ test('Post to all products list', async ({ request }) => {
   
   console.log('Response Body:', responseBody);
 });
+
+// this is passed
