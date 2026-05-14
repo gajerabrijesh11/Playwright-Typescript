@@ -1,25 +1,50 @@
-A Playwright + TypeScript demo using Page Object Model (POM) to demonstrate E2E and API test patterns, local reporting, and a sample CI workflow.
-Status: Learning / Demo project — basic demo tests for core flows (still expanding coverage); actively improving coverage and CI artifacts.
+Playwright Automation Framework (TypeScript + Python)
+📌 Overview
+This repository demonstrates a modern QA automation framework built with Playwright using TypeScript and experimental Python tests. It showcases Page Object Model (POM) design, UI + API test integration, reporting, and a sample CI/CD workflow with GitHub Actions.
 
-I created this repo while practicing Playwright; it’s my first attempt at combining UI and API tests with CI.”
+Status: Active learning project — expanding coverage and CI artifacts. Designed to highlight automation skills for recruiters and hiring managers.
 
-Maintainer: Brijesh Gajera — I built this repo while learning Playwright and TypeScript. Feedback and PRs welcome.
+👨‍💻 My Role
+Designed and implemented Page Object Models for core flows (Login, Registration, Search, Product Details).
 
-Quick links
-Repo: github.com/gajerabrijesh11/Playwright-Typescript
+Developed UI and API test suites with Playwright.
 
-Portfolio: github.com/gajerabrijesh11
+Configured Playwright reporters (HTML, trace viewer) for debugging and reporting.
 
-Contact: linkedin.com/in/gajera-brijesh-a3438198
+Set up a sample GitHub Actions workflow to run tests automatically on push/PR.
 
-## 🎬 Demo
-![Demo](./demo.gif)
+Experimented with Playwright Python to demonstrate cross‑language automation skills.
 
-*Above: Running tests locally and viewing the Playwright HTML report.*
+🛠 Skills & Tools Demonstrated
+Playwright (TypeScript + Python)
 
+Page Object Model (POM)
 
-Quick start (run in 3–5 commands)
+UI + API test automation
 
+CI/CD with GitHub Actions
+
+Reporting (HTML, traces; Allure planned)
+
+Test data management
+
+Cross‑browser testing
+
+🗂 Project Structure
+Code
+Playwright-Typescript/
+├── Base/                 # Common setup/teardown
+├── pages/                # Page Object Model classes
+├── tests/                # UI test specs
+│   └── APITests/         # API test specs
+├── test-data/            # Centralized test data
+├── playwright-report/    # Local HTML reports
+├── playwright.config.ts  # Playwright config
+├── package.json
+├── .github/workflows/ci.yml  # Sample CI workflow
+└── python/ (experimental)    # Playwright Python tests
+🚀 Quick Start
+bash
 # 1. Clone
 git clone https://github.com/gajerabrijesh11/Playwright-Typescript.git
 cd Playwright-Typescript
@@ -33,123 +58,90 @@ npx playwright install --with-deps
 # 4. Run tests (headless)
 npm test
 
-# 5. View HTML report (after tests finish)
+# 5. View HTML report
 npm run show-report
-Note: This repository is a demo. Tests are intended to be runnable locally with the commands above. CI workflow is included as an example; artifact upload may be experimental.
+🧪 Example Tests
+UI Tests
 
-What this repo contains (short)
-POM structure: pages/ contains page objects (Home, Login, Signup, ProductDetails, etc.).
+Login.spec.ts → Verify login success & failure
 
-Tests: tests/ contains UI specs and tests/APITests/ contains API specs.
+RegisterNewUser.spec.ts → End‑to‑end user registration
 
-Test data: centralized in test-data/.
+SearchProduct.spec.ts → Product search & filtering
 
-Reports: Playwright HTML reports generated locally in playwright-report/.
+ProductDetails.spec.ts → Product details rendering & interactions
 
-Sample CI: .github/workflows/ci.yml (example workflow to run tests on push/PR).
+API Tests
 
-Python experiments: small experimental Python pages/tests are present under Pytest_Pages/ and Pytests/ (marked experimental).
+POSTRegisterUser.spec.ts → Register user (happy path)
 
-Purpose and my role
-Purpose: Learn and demonstrate common automation patterns (POM, fixtures, API + UI integration, basic CI).
+POSTVerifyLogin.spec.ts → Verify login endpoint
 
-My role: I designed page objects, wrote demo tests for core flows, and configured an example GitHub Actions workflow.
+📊 Reporting & Debugging
+HTML Reports: Generated locally (playwright-report/).
 
-Current focus: Stabilize tests, add more API coverage, and improve CI artifact handling.
+Traces: Captured on first retry for failed tests.
 
-How tests are organized (folder overview)
-Code
-Playwright-Typescript/
-├── Base/                 # baseTest.ts (common setup/teardown)
-├── pages/                # Page Object Model classes
-├── tests/                # UI test specs (Login, Register, Search, etc.)
-│   └── APITests/         # API test specs
-├── test-data/            # centralized test data
-├── playwright-report/    # HTML reports (local)
-├── playwright.config.ts  # Playwright config
-├── package.json
-└── .github/workflows/ci.yml
-Example Page Object (pattern)
-ts
-// pages/LoginPage.ts (example)
-import { Page } from '@playwright/test';
+Allure (planned): Future integration for advanced reporting.
 
-export class LoginPage {
-  readonly page: Page;
-  constructor(page: Page) { this.page = page; }
+⚙️ CI/CD
+Sample GitHub Actions workflow (.github/workflows/ci.yml) includes:
 
-  async goto() { await this.page.goto('/login'); }
-
-  async login(username: string, password: string) {
-    await this.page.fill('#username', username);
-    await this.page.fill('#password', password);
-    await this.page.click('button[type="submit"]');
-  }
-}
-Test naming and intent (examples)
-File	Purpose
-tests/Login.spec.ts	Verify login success and failure scenarios
-tests/RegisterNewUser.spec.ts	End‑to‑end user registration flow
-tests/SearchProduct.spec.ts	Product search and filtering checks
-tests/ProductDetails.spec.ts	Product details rendering and interactions
-tests/APITests/POSTRegisterUser.spec.ts	API: register user (happy path)
-tests/APITests/POSTVerifyLogin.spec.ts	API: verify login endpoint
-
-
-Guideline: Each test file contains short, descriptive test names and a one‑line comment explaining the test purpose.
-
-Reporting & debugging
-Local HTML report: Playwright HTML reporter is configured. After a run, open the report with:
-
-bash
-npm run show-report
-# or
-npx playwright show-report
-Traces: Traces are enabled for debugging failed tests (configured to capture on first retry). Use npx playwright show-trace <trace.zip> to inspect a trace.
-
-CI (example)
-A sample GitHub Actions workflow is included at .github/workflows/ci.yml. It demonstrates:
-
-Checkout, Node setup, dependency install
+Node setup & dependency install
 
 Playwright browser install
 
-Running tests
+Test execution
 
-Uploading the HTML report as an artifact (example)
+Uploading HTML report as artifact
 
-Note: CI is provided as an example. If you enable the workflow, check the Actions tab to confirm artifact upload and badge status.
+👉 CI badge will be added once workflow is enabled.
 
-How to run specific tests
-Run a single test file:
+🐍 Python (Experimental)
+Pytest_Pages/ and Pytests/ contain initial Playwright Python experiments.
 
-bash
-npx playwright test tests/Login.spec.ts
-Run tests by name (grep):
+Run with:
 
 bash
-npx playwright test --grep "Login"
-Run tests in a specific browser:
+cd Pytests
+pip install -r requirements.txt
+pytest
+📌 Purpose
+This project is part of my transition from Manual QA to Automation QA/SDET. It highlights:
 
-bash
-npx playwright test --project=chromium
-Test data
-All test data is centralized in test-data/user.ts. Keep test data minimal and avoid hardcoding secrets. Example:
+Strong manual QA background
 
-ts
-export const userData = {
-  name: 'Demo User',
-  email: 'demo@example.com',
-  password: 'Password123'
-};
-What I intentionally marked as experimental
-Python tests and pages under Pytest_Pages/ and Pytests/ are experimental and included to show cross‑language exploration. They are not required to run the main TypeScript tests.
+Hands‑on Playwright automation (TS + Python)
 
-Some API tests are basic smoke/functional checks; I plan to expand them into more thorough contract tests.
+CI/CD awareness
 
-Known limitations (be honest)
-This is a learning/demo repository, not a production test framework.
+Modern QA practices (POM, fixtures, API + UI integration)
 
-Some tests are intentionally small to keep the demo runnable on a typical laptop.
+🔮 Roadmap
+Expand API contract tests
 
-CI artifact handling and parallelization are example configurations and may need tuning for large suites.
+Integrate Allure reporting
+
+Add Docker support
+
+Improve CI artifact handling & parallelization
+
+🔗 Links
+Repo: Playwright-Typescript
+
+Portfolio: GitHub Profile
+
+LinkedIn: Brijesh Gajera
+
+✅ Recruiter Note
+This repository is intentionally designed as a learning showcase. It demonstrates my ability to:
+
+Build automation frameworks from scratch
+
+Apply QA best practices
+
+Learn and adapt new tools (Playwright TS/Python)
+
+Contribute to CI/CD pipelines
+
+👉 This version makes your README recruiter‑friendly: it highlights skills, structure, CI/CD, reporting, Python experiments, and roadmap.
